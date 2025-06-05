@@ -1,4 +1,4 @@
 select distinct
     employee_residence,
     remote_ratio
-from {{ ref('stg_salary_data') }}
+from {{ ref('dbt_demo.data_salaries') }}
