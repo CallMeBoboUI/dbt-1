@@ -1,0 +1,29 @@
+# models/marts/hr_analytics/schema.yml
+version: 2
+
+models:
+  - name: dim_job
+    description: "Dimension des métiers"
+    columns:
+      - name: job_title
+        tests: [not_null]
+
+  - name: dim_time
+    description: "Dimension temporelle"
+    columns:
+      - name: year
+        tests: [not_null, unique]
+
+  - name: dim_location
+    description: "Lieu de résidence de l’employé et remote"
+    columns:
+      - name: employee_residence
+        tests: [not_null]
+
+  - name: fct_salary
+    description: "Table de faits contenant les données salariales"
+    columns:
+      - name: salary_fact_id
+        tests: [not_null, unique]
+      - name: salary_in_usd
+        tests: [not_null]
