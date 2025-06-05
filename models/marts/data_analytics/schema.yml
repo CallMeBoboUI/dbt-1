@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: dbt_demo
+    database: workspace_1
+    schema: dbt_demo
+    tables:
+      - name: data_salaries
