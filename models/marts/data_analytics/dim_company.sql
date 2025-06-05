@@ -1,4 +1,9 @@
-select distinct
-    company_location,
-    company_size
-from {{ ref('dbt_demo.data_salaries') }}
+WITH base AS (
+    SELECT
+        YearsExperience,
+        Salary
+    FROM {{ source('dbt_demo', 'data_salaries') }}
+)
+
+SELECT *
+FROM base
