@@ -1,0 +1,3 @@
+packages:
+  - package: dbt-labs/dbt_utils
+    version: 0.8.6  # ou la dernière version stable compatible avec ta version de dbt

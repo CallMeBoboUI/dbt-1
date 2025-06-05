@@ -1,5 +1,12 @@
 select
-    {{ dbt_utils.generate_surrogate_key(['work_year', 'job_title', 'employee_residence', 'company_location']) }} as salary_fact_id,
+    md5(
+        concat_ws('||', 
+            cast(work_year as string),
+            job_title,
+            employee_residence,
+            company_location
+        )
+    ) as salary_fact_id,
     work_year,
     job_title,
     employee_residence,
@@ -10,4 +17,4 @@ select
     remote_ratio,
     experience_level,
     employment_type
-from {{ source('dbt_demo', 'salary_dataset') }}
+from {{ source('dbt_demo', 'data_salaries') }}
